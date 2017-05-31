@@ -10,6 +10,8 @@ gem 'foundation-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-rails'
 
+gem "font-awesome-rails"
+
 gem 'rails_12factor'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
