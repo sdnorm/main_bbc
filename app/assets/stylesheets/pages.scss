@@ -10,7 +10,7 @@ $menu-hover-lines-border-width: 3px;
 
   li a {
     padding: 0.75rem 0;
-    color: rgba(blue, 0.5);
+    color: rgba(yellow, 0.5);
     position: relative;
     margin-left: 1rem;
   }
@@ -45,7 +45,7 @@ $menu-hover-lines-border-width: 3px;
 
   a:hover,
   li.active > a {
-    color: blue;
+    color: yellow;
     transition: $menu-hover-lines-transition;
   }
 
@@ -103,6 +103,7 @@ $highlight: yellow;
 
   .subscribe-button {
     background-color:$highlight;
+    color: #404040;
 
     &:hover {
      background-color: darken($highlight, 5%);
@@ -119,4 +120,8 @@ $highlight: yellow;
      transition: color 0.3s ease-in;
     }
   }
+}
+
+.top-nav-section {
+  background: #404040;
 }
