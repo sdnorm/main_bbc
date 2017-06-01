@@ -13,26 +13,23 @@
     </div>
     <div class="small-12 medium-4 columns small-order-1 medium-order-2 mailing-container" id="contact">
       <h4 class="mailing-list">Contact Us</h4>
-      <form action="">
+      <%= form_tag(contact_submission_path, method: "get") do %>
         <div class="row">
-          <label>Full name *
-            <input type="text" placeholder="Full name">
-          </label>
+          <%= label_tag 'name', 'Full Name *'%>
+          <%= text_field_tag 'name', nil, placeholder: "Full Name" %>
         </div>
         <div class="row">
-          <label>Email *
-            <input type="email" placeholder="Email address">
-          </label>
+          <%= label_tag 'email', 'Email Address *'%>
+          <%= email_field_tag 'email', nil, placeholder: "Email Address" %>
         </div>
         <div class="row">
-          <label>Message *
-            <textarea placeholder="Message" rows="3"></textarea>
-          </label>
+          <%= label_tag 'message', 'Message *'%>
+          <%= text_area_tag 'message', nil, rows: 5, placeholder: "Message" %>
         </div>
         <div class="contact-panel-actions">
-          <a class="button expanded subscribe-button" href="#">Submit</a>
+          <%= submit_tag "Submit", class: "button expanded subscribe-button"%>
         </div>
-      </form>
+      <% end %>
     </div>
   </div>
   <div class="row tag-search">
