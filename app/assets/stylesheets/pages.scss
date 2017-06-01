@@ -3,122 +3,6 @@ $menu-hover-lines-border-width: 3px;
 
 @import 'settings';
 
-.menu-hover-lines {
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: 500;
-  letter-spacing: 1px;
-  transition: $menu-hover-lines-transition;
-
-  li a {
-    padding: 0.75rem 0;
-    color: rgba(yellow, 0.5);
-    position: relative;
-    margin-left: 1rem;
-  }
-
-  li:first-child a {
-    margin-left: 0;
-  }
-
-  li.active > a {
-    background-color: transparent;
-  }
-
-  a:before,
-  a::after {
-    height: $menu-hover-lines-border-width;
-    position: absolute;
-    content: '';
-    transition: $menu-hover-lines-transition;
-    background-color: yellow;
-    width: 0;
-  }
-
-  a::before {
-    top: 0;
-    left: 0;
-  }
-
-  a::after {
-    bottom: 0;
-    right: 0;
-  }
-
-  a:hover,
-  li.active > a {
-    color: yellow;
-    transition: $menu-hover-lines-transition;
-  }
-
-  a:hover::before,
-  .active a::before,
-  a:hover::after,
-  .active a::after {
-    width: 100%;
-  }
-}
-
-#right-list {
-  float: right;
-}
-
-.menu-hover-lines-right {
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: 500;
-  letter-spacing: 1px;
-  transition: $menu-hover-lines-transition;
-
-  li a {
-    padding: 0.75rem 0;
-    color: rgba(yellow, 0.5);
-    position: relative;
-    margin-right: 1rem;
-  }
-
-  li:first-child a {
-    margin-left: 0;
-  }
-
-  li.active > a {
-    background-color: transparent;
-  }
-
-  a:before,
-  a::after {
-    height: $menu-hover-lines-border-width;
-    position: absolute;
-    content: '';
-    transition: $menu-hover-lines-transition;
-    background-color: yellow;
-    width: 0;
-  }
-
-  a::before {
-    top: 0;
-    left: 0;
-  }
-
-  a::after {
-    bottom: 0;
-    right: 0;
-  }
-
-  a:hover,
-  li.active > a {
-    color: yellow;
-    transition: $menu-hover-lines-transition;
-  }
-
-  a:hover::before,
-  .active a::before,
-  a:hover::after,
-  .active a::after {
-    width: 100%;
-  }
-}
-
 .top-section {
   background: image-url("top-section-image.png");
   background-repeat: no-repeat;
@@ -127,9 +11,9 @@ $menu-hover-lines-border-width: 3px;
   height: 650px;
 }
 
-.email-form {
-  margin-top: 175px;
-}
+// .email-form {
+//   margin-top: 175px;
+// }
 
 $highlight: yellow;
 
