@@ -12,8 +12,8 @@
         <li><%= link_to "About Us", root_path(anchor: "about") %></li>
         <li><%= link_to "Info", root_path(anchor: "info") %></li>
         <li><%= link_to "Contact", root_path(anchor: "contact") %></li>
-        <li>
-          <button type="button" class="button hollow topbar-responsive-button">Client Login</button>
+        <li class="client-button">
+          <%= link_to "Client Login", new_client_session_path, class: "button hollow topbar-responsive-button" %>
         </li>
       </ul>
     </div>
