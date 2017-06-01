@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :clients
   root 'pages#main'
 
   get '/info', to: 'pages#info', as: :info
