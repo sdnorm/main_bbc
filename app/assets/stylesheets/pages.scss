@@ -8,7 +8,7 @@ $menu-hover-lines-border-width: 3px;
   background-repeat: no-repeat;
   background-size: 100%;
   width: 100%;
-  height: 650px;
+  height: 450px;
 }
 
 // .email-form {
@@ -169,4 +169,14 @@ $product-feature-section-divider-color: $medium-gray;
   .four-up-feature-text {
     margin-bottom: 2rem;
   }
+}
+
+.main-title {
+  font-family: 'Bungee Outline', cursive;
+  font-size: 100px;
+  color: #ecf0f1;
+}
+
+.email-text {
+  color: #2C3840;
 }
