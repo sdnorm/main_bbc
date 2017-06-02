@@ -8,9 +8,8 @@ Rails.application.routes.draw do
   get '/contact_submission', to: 'pages#contact_submission', as: :contact_submission
   get '/email_submission', to: 'pages#email_submission', as: :email_submission
 
-  get '/info', to: 'pages#info', as: :info
+  # resources :client_portals
 
-  get '/about', to: 'pages#about', as: :about
+  get 'client-portal', to: 'client_portals#index', as: :client_portal
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

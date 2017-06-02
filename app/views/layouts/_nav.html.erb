@@ -12,9 +12,13 @@
         <li><%= link_to "About Us", root_path(anchor: "about") %></li>
         <li><%= link_to "Info", root_path(anchor: "info") %></li>
         <li><%= link_to "Contact", root_path(anchor: "contact") %></li>
-        <li class="client-button">
-          <%= link_to "Client Login", new_client_session_path, class: "button hollow topbar-responsive-button" %>
-        </li>
+        <% if client_signed_in? %>
+          <li><%= link_to "Sign Out", destroy_client_session_path %></li>
+        <% else %>
+          <li class="client-button">
+            <%= link_to "Client Portal", client_portal_path, class: "button hollow topbar-responsive-button" %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
