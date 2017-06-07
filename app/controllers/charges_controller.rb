@@ -7,11 +7,6 @@ class ChargesController < ApplicationController
   end
 
   def create
-    # Amount in cents
-    # puts "------------------"
-    # puts "card brand"
-    # puts params[:card_brand]
-    # puts "------------------"
     @client.stripe_id = params[:stripeToken]
     @client.card_last4 = params[:card_last4]
     @client.card_exp_month = params[:card_exp_month]
@@ -22,14 +17,12 @@ class ChargesController < ApplicationController
       :email => params[:stripeEmail],
       :source  => params[:stripeToken]
     )
-
-    charge = Stripe::Charge.create(
-      :customer    => customer.id,
-      :amount      => @amount,
-      :description => 'Rails Stripe customer',
-      :currency    => 'usd'
-    )
-
+    # charge = Stripe::Charge.create(
+    #   :customer    => customer.id,
+    #   :amount      => @amount,
+    #   :description => 'Rails Stripe customer',
+    #   :currency    => 'usd'
+    # )
     Stripe::Subscription.create(
       :customer => customer.id,
       :plan => "basic-monthly",

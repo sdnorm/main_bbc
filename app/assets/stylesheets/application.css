@@ -148,3 +148,13 @@ body {
              animation: fadeIn 1s ease-in;
    }
  }
+
+ .notice {
+   background: #e74c3c;
+   color: #f1c40f;
+ }
+
+ .alert {
+   background: #7f8c8d;
+   color: yellow;
+ }

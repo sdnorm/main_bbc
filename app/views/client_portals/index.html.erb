@@ -1,4 +1,14 @@
 <div class="row">
+  <% if flash[:notice] %>
+    <div class="large-6 small-12 large-centered small-centered text-center">
+      <p class="notice"><%= notice %></p>
+    </div>
+  <% end %>
+  <% if flash[:alert] %>
+    <div class="large-6 small-12 large-centered small-centered text-center">
+      <p class="alert"><%= alert %></p>
+    </div>
+  <% end %>
   <h1>ClientPortal#index</h1>
   <p>Find me in app/views/client_portal/index.html.erb</p>
 
