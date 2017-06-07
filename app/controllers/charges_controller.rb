@@ -1,4 +1,49 @@
 class ChargesController < ApplicationController
+
+  before_action :authenticate_client!
+  before_action :set_client
+
+  def new
+  end
+
   def create
+    # Amount in cents
+    # puts "------------------"
+    # puts "card brand"
+    # puts params[:card_brand]
+    # puts "------------------"
+    @client.stripe_id = params[:stripeToken]
+    @client.card_last4 = params[:card_last4]
+    @client.card_exp_month = params[:card_exp_month]
+    @client.card_exp_year = params[:card_exp_year]
+    @client.card_type = params[:card_brand]
+    @amount = 500
+    customer = Stripe::Customer.create(
+      :email => params[:stripeEmail],
+      :source  => params[:stripeToken]
+    )
+
+    charge = Stripe::Charge.create(
+      :customer    => customer.id,
+      :amount      => @amount,
+      :description => 'Rails Stripe customer',
+      :currency    => 'usd'
+    )
+
+    Stripe::Subscription.create(
+      :customer => customer.id,
+      :plan => "basic-monthly",
+    )
+    flash[:notice] = "Thanks for your payment/subsription!"
+    redirect_to client_portal_url
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to client_portal_path
+  end
+
+  private
+
+  def set_client
+    @client = current_client
   end
 end

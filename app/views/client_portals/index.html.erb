@@ -6,5 +6,67 @@
     <%= @client.client_portals.first.company_name %>
   </p>
 
-  <%= link_to "Subscribe to a plan", subscription_path, class: "button success" %>
+  <%= form_tag charges_path, id: "payment-form" do %>
+    <input type="hidden" name="stripeToken" id="stripeToken" />
+    <input type="hidden" name="card_last4" id="card_last4" />
+    <input type="hidden" name="card_exp_month" id="card_exp_month" />
+    <input type="hidden" name="card_exp_year" id="card_exp_year" />
+    <input type="hidden" name="card_brand" id="card_brand" />
+  <% end %>
+
+  <!-- <%= link_to "Subscribe to a plan", subscriptions_path, class: "button success" %> -->
+  <button class="hollow button large" id="stripe-demo">Subscribe</button>
+  <script src="https://checkout.stripe.com/checkout.js"></script>
+  <script>
+    var paymentForm = document.getElementById('payment-form');
+    var handler = StripeCheckout.configure({
+      key: 'pk_test_Mz55NUk1Hbcdtv8xPH7edhvJ',
+      image: 'http://heytaco-blog.s3.amazonaws.com/2016/09/golden-taco.jpg',
+      locale: 'auto',
+      token: function(token) {
+        // You can access the token ID with `token.id`.
+        // Get the token ID to your server-side code for use.
+        console.log(token.id);
+        console.log(token.card.last4);
+        console.log(token.card.exp_month);
+        console.log(token.card.exp_year);
+        console.log(token.card.brand);
+
+        document.getElementById('stripeToken').value = token.id;
+        document.getElementById('card_last4').value = token.card.last4;
+        document.getElementById('card_exp_month').value = token.card.exp_month;
+        document.getElementById('card_exp_year').value = token.card.exp_year;
+        document.getElementById('card_brand').value = token.card.brand;
+
+        console.log("--------------")
+        console.log(document.getElementById('stripeToken').value)
+        console.log("--------------")
+
+        // paymentForm.append(document.querySelector('<input type="hidden" name="stripeToken" />').val(token.id));
+        // paymentForm.append(document.querySelector('<input type="hidden" name="card_last4" />').val(token.card.last4));
+        // paymentForm.append(document.querySelector('<input type="hidden" name="card_exp_month" />').val(token.card.exp_month));
+        // paymentForm.append(document.querySelector('<input type="hidden" name="card_exp_year" />').val(token.card.exp_year));
+        // paymentForm.append(document.querySelector('<input type="hidden" name="card_brand" />').val(token.card.brand));
+        // paymentForm.submit();
+        document.getElementById("payment-form").submit();
+      }
+    });
+
+    document.getElementById('stripe-demo').addEventListener('click', function(e) {
+      // Open Checkout with further options:
+      handler.open({
+        amount: 2000,
+        name: "Golden Taco Tech",
+        description: "Pro Subscription ($29 per month)",
+        panelLabel: "Subscribe",
+        allowRememberMe: false
+      });
+      e.preventDefault();
+    });
+
+    // Close Checkout on page navigation:
+    window.addEventListener('popstate', function() {
+      handler.close();
+    });
+  </script>
 </div>

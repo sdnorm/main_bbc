@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   devise_for :clients
   root 'pages#main'
 
+  resources :charges
+
   get '/contact_submission', to: 'pages#contact_submission', as: :contact_submission
   get '/email_submission', to: 'pages#email_submission', as: :email_submission
 
