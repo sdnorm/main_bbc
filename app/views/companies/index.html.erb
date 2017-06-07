@@ -11,12 +11,11 @@
   <% end %>
   <h1>ClientPortal</h1>
 
-  <%= link_to "Create A Company", new_company_path, class:"hollow button success large" %>
-
   <p>
-
-    <% unless @client.client_portals.empty? %>
-      <%= @client.client_portals.first.company_name %>
+    <% if @client.companies.empty? %>
+      <%= link_to "Create A Company", new_company_path, class:"hollow button success large" %>
+    <% else %>
+      <%= @client.companies.first.company_name %>
     <% end %>
   </p>
 

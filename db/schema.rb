@@ -10,19 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170605194041) do
+ActiveRecord::Schema.define(version: 20170607051523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "client_portals", force: :cascade do |t|
-    t.string "company_name"
-    t.string "domain"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "client_id"
-    t.index ["client_id"], name: "index_client_portals_on_client_id"
-  end
 
   create_table "clients", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -45,6 +36,15 @@ ActiveRecord::Schema.define(version: 20170605194041) do
     t.string "card_type"
     t.index ["email"], name: "index_clients_on_email", unique: true
     t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string "company_name"
+    t.string "domain"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "client_id"
+    t.index ["client_id"], name: "index_companies_on_client_id"
   end
 
   create_table "contact_submissions", force: :cascade do |t|
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 20170605194041) do
     t.index ["plans_id"], name: "index_subscriptions_on_plans_id"
   end
 
-  add_foreign_key "client_portals", "clients"
+  add_foreign_key "companies", "clients"
   add_foreign_key "subscriptions", "clients", column: "clients_id"
   add_foreign_key "subscriptions", "plans", column: "plans_id"
 end

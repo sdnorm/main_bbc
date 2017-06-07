@@ -1,6 +1,6 @@
 class SubscriptionsController < ApplicationController
-  before_action :set_subscription, only: [:show, :edit, :update, :destroy]
 
+  before_action :set_subscription, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_client!
   before_action :redirect_to_signup, only: [:new]
 

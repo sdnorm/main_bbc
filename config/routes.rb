@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   # resources :client_portals
 
-  get 'client-portal', to: 'client_portals#index', as: :client_portal
+  get 'client-portal', to: 'companies#index', as: :client_portal
+
+  resources :companies, except: :index
 
 end
