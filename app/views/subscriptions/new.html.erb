@@ -1,0 +1,26 @@
+<div class="row">
+  <h1>New Subscription</h1>
+
+  <h1>Subscribe!</h1>
+
+  <button class="button success" id="stripe-demo">Subscribe</button>
+
+  <script src="https://checkout.stripe.com/checkout.js"></script>
+  <script>
+    var handler = StripeCheckout.configure({
+      key: "pk_test_1MCYLYHQDa4DwnBoKd5CqoaP",
+      image: "https://stripe.com/img/documentation/checkout/marketplace.png",
+      name: "Demo SaaS Site",
+      description: "Subscription ($29 per month)",
+      panelLabel: "Subscribe",
+      allowRememberMe: false
+    });
+
+    document.getElementById('stripe-demo').addEventListener('click', function(e) {
+      handler.open();
+      e.preventDefault();
+    });
+  </script>
+
+  <%= link_to 'Back', subscriptions_path %>
+</div>

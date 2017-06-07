@@ -5,4 +5,5 @@ class Client < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :client_portals
+  has_many :subscriptions
 end

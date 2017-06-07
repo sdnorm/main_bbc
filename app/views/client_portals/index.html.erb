@@ -1,6 +1,10 @@
-<h1>ClientPortal#index</h1>
-<p>Find me in app/views/client_portal/index.html.erb</p>
+<div class="row">
+  <h1>ClientPortal#index</h1>
+  <p>Find me in app/views/client_portal/index.html.erb</p>
 
-<p>
-  <%= @client.client_portals.first.company_name %>
-</p>
+  <p>
+    <%= @client.client_portals.first.company_name %>
+  </p>
+
+  <%= link_to "Subscribe to a plan", subscription_path, class: "button success" %>
+</div>

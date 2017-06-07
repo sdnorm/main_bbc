@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :subscriptions
+  get 'charges/create'
+
   get 'client_portal/index'
 
   devise_for :clients
