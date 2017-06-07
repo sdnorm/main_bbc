@@ -152,9 +152,11 @@ body {
  .notice {
    background: #e74c3c;
    color: #f1c40f;
+   padding: .5rem;
  }
 
  .alert {
    background: #7f8c8d;
    color: yellow;
+   padding: .5rem;
  }
