@@ -1,0 +1,18 @@
+<div class="row">
+  <%= render 'layouts/flash' %>
+  <h1>Companies</h1>
+
+  <p>
+    <% unless @client.companies.empty? %>
+      <ul>
+        <% @client.companies.each do |company| %>
+          <li>
+            <%= link_to company.company_name, company_path(company) %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </p>
+
+    <%= link_to "Create A Company", new_company_path, class:"hollow button success large" %>
+</div>

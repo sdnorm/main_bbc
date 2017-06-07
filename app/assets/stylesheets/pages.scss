@@ -1,73 +1,19 @@
 $menu-hover-lines-transition: all 0.35s ease;
 $menu-hover-lines-border-width: 3px;
 
-.menu-hover-lines {
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: 500;
-  letter-spacing: 1px;
-  transition: $menu-hover-lines-transition;
-
-  li a {
-    padding: 0.75rem 0;
-    color: rgba(yellow, 0.5);
-    position: relative;
-    margin-left: 1rem;
-  }
-
-  li:first-child a {
-    margin-left: 0;
-  }
-
-  li.active > a {
-    background-color: transparent;
-  }
-
-  a:before,
-  a::after {
-    height: $menu-hover-lines-border-width;
-    position: absolute;
-    content: '';
-    transition: $menu-hover-lines-transition;
-    background-color: yellow;
-    width: 0;
-  }
-
-  a::before {
-    top: 0;
-    left: 0;
-  }
-
-  a::after {
-    bottom: 0;
-    right: 0;
-  }
-
-  a:hover,
-  li.active > a {
-    color: yellow;
-    transition: $menu-hover-lines-transition;
-  }
-
-  a:hover::before,
-  .active a::before,
-  a:hover::after,
-  .active a::after {
-    width: 100%;
-  }
-}
+@import 'settings';
 
 .top-section {
   background: image-url("top-section-image.png");
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
   width: 100%;
-  height: 650px;
+  height: 450px;
 }
 
-.email-form {
-  margin-top: 175px;
-}
+// .email-form {
+//   margin-top: 175px;
+// }
 
 $highlight: yellow;
 
@@ -124,4 +70,119 @@ $highlight: yellow;
 
 .top-nav-section {
   background: #404040;
+}
+
+#info {
+  background: #95a5a6;
+}
+
+$light-gray: #bdc3c7;
+$medium-gray: #95a5a6;
+
+$product-feature-section-large-width: 75%;
+$product-feature-section-bg: $light-gray;
+$product-feature-section-divider-color: $medium-gray;
+
+.product-feature-section {
+  background: $product-feature-section-bg;
+  padding: 1rem;
+}
+
+.product-feature-section-outer {
+  display: flex;
+  max-width: 100%;
+  margin: 0 auto;
+  flex-direction: column;
+
+  @include breakpoint(medium) {
+    max-width: $product-feature-section-large-width;
+  }
+}
+
+.product-feature-section-headline {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.product-feature-section-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.product-feature-section-feature {
+  display: flex;
+  align-items: flex-start;
+  padding: 1rem;
+  flex: 1 0 50%;
+  justify-content: flex-start;
+  flex-direction: column;
+
+  &.top-left {
+    border-right: 1px solid $product-feature-section-divider-color;
+    border-bottom: 1px solid $product-feature-section-divider-color;
+  }
+
+  &.top-right {
+    border-bottom: 1px solid $product-feature-section-divider-color;
+  }
+
+  &.bottom-left {
+    border-right: 1px solid $product-feature-section-divider-color;
+  }
+
+  .feature-title {
+    margin-bottom: 0;
+    line-height: 16px;
+    font-size: 0.875rem;
+  }
+
+  .feature-desc {
+    margin-bottom: 0;
+  }
+
+  .fa {
+    margin-right: 1.25rem;
+    font-size: 2rem;
+  }
+
+  @include breakpoint(medium) {
+    padding: 2rem;
+    flex: 1 0 50%;
+    justify-content: flex-start;
+    flex-direction: row;
+  }
+}
+
+.four-up-feature {
+  text-align: center;
+
+  .four-up-feature-header {
+    margin-bottom: 3rem;
+    display: flex;
+  }
+
+  .four-up-feature-image {
+    margin-bottom: 2rem;
+  }
+
+  .four-up-feature-text {
+    margin-bottom: 2rem;
+  }
+}
+
+.main-title {
+  font-family: 'Bungee Outline', cursive;
+  font-size: 100px;
+  color: #ecf0f1;
+  @media screen and (max-width: 39.9375em) {
+    font-size: 50px;
+  }
+  // @media screen and (min-width: 40em) and (max-width: 63.9375em) {
+  //   font-size: 20px;
+  // }
+}
+
+.email-text {
+  color: #2C3840;
 }

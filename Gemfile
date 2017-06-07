@@ -10,7 +10,15 @@ gem 'foundation-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-rails'
 
+gem "font-awesome-rails"
+
 gem 'rails_12factor'
+
+gem 'devise'
+
+gem 'figaro'
+
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'
