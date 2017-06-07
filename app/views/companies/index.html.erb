@@ -1,21 +1,16 @@
 <div class="row">
-  <% if flash[:notice] %>
-    <div class="large-6 small-12 large-centered small-centered text-center">
-      <p class="notice"><%= notice %></p>
-    </div>
-  <% end %>
-  <% if flash[:alert] %>
-    <div class="large-6 small-12 large-centered small-centered text-center">
-      <p class="alert"><%= alert %></p>
-    </div>
-  <% end %>
+  <%= render 'layouts/flash' %>
   <h1>Companies</h1>
 
   <p>
     <% unless @client.companies.empty? %>
-      <% @client.companies.each do |company| %>
-        <%= link_to company.company_name, company_path(company) %>
-      <% end %>
+      <ul>
+        <% @client.companies.each do |company| %>
+          <li>
+            <%= link_to company.company_name, company_path(company) %>
+          </li>
+        <% end %>
+      </ul>
     <% end %>
   </p>
 

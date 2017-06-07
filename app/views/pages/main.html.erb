@@ -1,14 +1,5 @@
 <div class="top-section">
-  <% if flash[:notice] %>
-    <div class="large-6 small-12 large-centered small-centered text-center">
-      <p class="notice"><%= notice %></p>
-    </div>
-  <% end %>
-  <% if flash[:alert] %>
-    <div class="large-6 small-12 large-centered small-centered text-center">
-      <p class="alert"><%= alert %></p>
-    </div>
-  <% end %>
+  <%= render 'layouts/flash' %>
   <div class="row">
     <div class="large-12 columns text-center">
       <h2 class="main-title">Taco Consulting</h2>
