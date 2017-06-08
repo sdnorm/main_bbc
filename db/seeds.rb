@@ -1,7 +1,6 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Plan.create([
+  {name: "RMR Intro Basic Annually", price: 480.00, stripe_id: "rmr-intro-basic-annually", billing_frequency: "annual"},
+  {name: "Fitness One Time", price: 480.00, stripe_id: "fitness-one-time", billing_frequency: "once"},
+  {name: "Basic Annually", price: 540.00, stripe_id: "basic-annually", billing_frequency: "annual"},
+  {name: "Basic Monthly", price: 50.00, stripe_id: "basic-monthly", billing_frequency: "monthly"}
+])

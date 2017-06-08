@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170607051523) do
+ActiveRecord::Schema.define(version: 20170608122917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +44,9 @@ ActiveRecord::Schema.define(version: 20170607051523) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "client_id"
+    t.bigint "plan_id"
     t.index ["client_id"], name: "index_companies_on_client_id"
+    t.index ["plan_id"], name: "index_companies_on_plan_id"
   end
 
   create_table "contact_submissions", force: :cascade do |t|
@@ -66,20 +68,21 @@ ActiveRecord::Schema.define(version: 20170607051523) do
     t.string "stripe_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "monthly_price"
-    t.string "annual_price"
+    t.bigint "price"
+    t.string "billing_frequency"
   end
 
   create_table "subscriptions", force: :cascade do |t|
-    t.bigint "clients_id"
-    t.bigint "plans_id"
+    t.bigint "client_id"
+    t.bigint "plan_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["clients_id"], name: "index_subscriptions_on_clients_id"
-    t.index ["plans_id"], name: "index_subscriptions_on_plans_id"
+    t.index ["client_id"], name: "index_subscriptions_on_client_id"
+    t.index ["plan_id"], name: "index_subscriptions_on_plan_id"
   end
 
   add_foreign_key "companies", "clients"
-  add_foreign_key "subscriptions", "clients", column: "clients_id"
-  add_foreign_key "subscriptions", "plans", column: "plans_id"
+  add_foreign_key "companies", "plans"
+  add_foreign_key "subscriptions", "clients"
+  add_foreign_key "subscriptions", "plans"
 end

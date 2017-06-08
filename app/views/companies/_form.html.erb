@@ -21,6 +21,14 @@
     <%= form.text_field :domain, id: :domain %>
   </div>
 
+  <div class="field">
+    <fieldset>
+      <legend>Choose Your Plan</legend>
+      <input type="radio" name="plan" value="basic-monthly" id="basic-monthly" required><label for="basic-monthly">Basic Annually</label>
+      <input type="radio" name="plan" value="basic-annually" id="basic-annually"><label for="basic-annually">Basic Monthly</label>
+    </fieldset>
+  </div>
+
   <div class="actions">
     <%= form.submit class: "button" %>
   </div>
