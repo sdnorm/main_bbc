@@ -16,7 +16,6 @@ class ChargesController < ApplicationController
       params[:card_brand]
     )
     @company.add_stripe_sub_id(params[:stripe_subscription_id])
-    @amount = 500
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
       :source  => params[:stripeToken]
