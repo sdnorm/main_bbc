@@ -3,13 +3,13 @@
   <h1><%= @company.company_name %></h1>
   <h4>Domain: <%= @company.domain %></h4>
   <h4>Plan: <%= @company.plan.name %></h4>
-
-  <%= form_tag charges_path, id: "payment-form" do %>
+  <%= form_tag charges_path(@company), id: "payment-form" do %>
     <input type="hidden" name="stripeToken" id="stripeToken" />
     <input type="hidden" name="card_last4" id="card_last4" />
     <input type="hidden" name="card_exp_month" id="card_exp_month" />
     <input type="hidden" name="card_exp_year" id="card_exp_year" />
     <input type="hidden" name="card_brand" id="card_brand" />
+    <input type="hidden" name="id" id="id" />
   <% end %>
 
   <button class="hollow button success large" id="stripe-demo">Subscribe</button>
@@ -28,6 +28,7 @@
         document.getElementById('card_exp_month').value = token.card.exp_month;
         document.getElementById('card_exp_year').value = token.card.exp_year;
         document.getElementById('card_brand').value = token.card.brand;
+        document.getElementById('id').value = '<%= @company.id %>';
         document.getElementById("payment-form").submit();
       }
     });
