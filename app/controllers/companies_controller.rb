@@ -19,6 +19,9 @@ class CompaniesController < ApplicationController
   end
 
   def create
+    # plan = Plan.find_by(taco_id: params[:plan])
+    # @company = Company.new(company_name: params[:company_name], domain: params[:domain], plan_id: plan.id)
+    # @company.client_id = @client.id
     @company = Company.new(company_params)
     @company.client_id = @client.id
     respond_to do |format|
@@ -59,7 +62,7 @@ class CompaniesController < ApplicationController
   end
 
   def company_params
-    params.require(:company).permit(:company_name, :domain)
+    params.require(:company).permit(:company_name, :domain, :plan_id)
   end
 
   def set_client
