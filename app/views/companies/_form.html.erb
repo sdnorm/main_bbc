@@ -25,8 +25,8 @@
     <fieldset>
       <legend>Choose Your Plan</legend>
       <% if current_client.email == "rmrhomeservices@gmail.com" %>
-        <%= form.radio_button 'plan', 'rmrhomeservices' %>
-        <%= form.label :rmr_home_services, 'RMR Home Services Plan' %>
+        <%= form.radio_button :plan_id, 1, id: "rmr_home" %>
+        <%= form.label :rmr_home_services, 'RMR Home Services Plan', for: 'rmr_home' %>
       <% else %>
         <%= form.radio_button 'plan', 'basic-annually' %>
         <%= form.label :basic_annually, 'Basic Annually' %>
