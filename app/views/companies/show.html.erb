@@ -17,7 +17,8 @@
   <script>
     var paymentForm = document.getElementById('payment-form');
     var handler = StripeCheckout.configure({
-      key: '<%= ENV["stripe_publishable_key"] %>',
+      // key: '<%= ENV["stripe_publishable_key"] %>',
+      key: "pk_live_ZO0eXNyhRtBFrQxPDo0SX6Df",
       image: 'http://heytaco-blog.s3.amazonaws.com/2016/09/golden-taco.jpg',
       locale: 'auto',
       token: function(token) {
