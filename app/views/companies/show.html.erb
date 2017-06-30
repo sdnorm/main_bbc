@@ -1,14 +1,15 @@
 <div class="row">
   <%= render 'layouts/flash' %>
   <h1><%= @company.company_name %></h1>
-  <h4><%= @company.domain %></h4>
-
-  <%= form_tag charges_path, id: "payment-form" do %>
+  <h4>Domain: <%= @company.domain %></h4>
+  <h4>Plan: <%= @company.plan.name %></h4>
+  <%= form_tag charges_path(@company), id: "payment-form" do %>
     <input type="hidden" name="stripeToken" id="stripeToken" />
     <input type="hidden" name="card_last4" id="card_last4" />
     <input type="hidden" name="card_exp_month" id="card_exp_month" />
     <input type="hidden" name="card_exp_year" id="card_exp_year" />
     <input type="hidden" name="card_brand" id="card_brand" />
+    <input type="hidden" name="id" id="id" />
   <% end %>
 
   <button class="hollow button success large" id="stripe-demo">Subscribe</button>
@@ -16,7 +17,7 @@
   <script>
     var paymentForm = document.getElementById('payment-form');
     var handler = StripeCheckout.configure({
-      key: 'pk_test_Mz55NUk1Hbcdtv8xPH7edhvJ',
+      key: '<%= ENV["stripe_publishable_key"] %>',
       image: 'http://heytaco-blog.s3.amazonaws.com/2016/09/golden-taco.jpg',
       locale: 'auto',
       token: function(token) {
@@ -27,6 +28,7 @@
         document.getElementById('card_exp_month').value = token.card.exp_month;
         document.getElementById('card_exp_year').value = token.card.exp_year;
         document.getElementById('card_brand').value = token.card.brand;
+        document.getElementById('id').value = '<%= @company.id %>';
         document.getElementById("payment-form").submit();
       }
     });
@@ -34,12 +36,13 @@
     document.getElementById('stripe-demo').addEventListener('click', function(e) {
       // Open Checkout with further options:
       handler.open({
-        amount: 2000,
-        name: "Golden Taco Tech",
-        description: "Pro Subscription ($29 per month)",
+        amount: '<%= @company.plan.price * 100 %>',
+        name: "Golden Taco Consulting",
+        description: '<%= @company.plan.name %>',
         panelLabel: "Subscribe",
         allowRememberMe: false,
-        email: "test@test.com"
+        email: '<%= @client.email %>'
+        // plan: '<%= @company.plan.stripe_id %>'
       });
       e.preventDefault();
     });

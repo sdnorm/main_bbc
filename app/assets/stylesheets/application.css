@@ -160,3 +160,7 @@ body {
    color: yellow;
    padding: .5rem;
  }
+
+ #error_explanation {
+   background: blue;
+ }

@@ -24,8 +24,18 @@
   <div class="field">
     <fieldset>
       <legend>Choose Your Plan</legend>
-      <input type="radio" name="plan" value="basic-monthly" id="basic-monthly" required><label for="basic-monthly">Basic Annually</label>
-      <input type="radio" name="plan" value="basic-annually" id="basic-annually"><label for="basic-annually">Basic Monthly</label>
+      <% if current_client.email == "rmrhomeservices@gmail.com" %>
+        <%= form.radio_button :plan_id, 1, id: "rmr_home" %>
+        <%= form.label :rmr_home_services, 'RMR Home Services Plan', for: 'rmr_home' %>
+      <% elsif current_client.email == "spencer@tacoshirt.co" %>
+        <%= form.radio_button :plan_id, 2, id: "test_plan" %>
+        <%= form.label :rmr_home_services, 'Test Plan', for: 'test_plan' %>
+      <% else %>
+        <%= form.radio_button 'plan', 'basic-annually' %>
+        <%= form.label :basic_annually, 'Basic Annually' %>
+        <%= form.radio_button 'plan', 'basic-monthly' %>
+        <%= form.label :basic_monthly, 'Basic Monthly' %>
+      <% end %>
     </fieldset>
   </div>
 
