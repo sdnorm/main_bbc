@@ -20,15 +20,14 @@ class ChargesController < ApplicationController
       :email => params[:stripeEmail],
       :source  => params[:stripeToken]
     )
-    subscription = Stripe::Subscription.create(
+    # subscription = Stripe::Subscription.create(
+    #   :customer => customer.id,
+    #   :plan => @company.plan.stripe_id#{}"basic-monthly"#params[:plan]#"basic-annually",
+    # )
+    Stripe::Subscription.create(
       :customer => customer.id,
       :plan => @company.plan.stripe_id#{}"basic-monthly"#params[:plan]#"basic-annually",
     )
-    # puts "-------------------------------"
-    # puts customer
-    # puts "-------------------------------"
-    # puts subscription
-    # puts "-------------------------------"
     flash[:notice] = "Thanks for your payment/subsription!"
     redirect_to client_portal_url
   rescue Stripe::CardError => e
@@ -45,4 +44,5 @@ class ChargesController < ApplicationController
   def set_company
     @company = Company.find(params[:id])
   end
+  
 end
