@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+
   def main
   end
 
@@ -17,4 +18,5 @@ class PagesController < ApplicationController
     flash[:notice] = "Thanks for reaching out! We will reply as soon as we can."
     redirect_to action: "main"
   end
+
 end

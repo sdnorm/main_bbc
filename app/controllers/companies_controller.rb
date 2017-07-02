@@ -68,4 +68,5 @@ class CompaniesController < ApplicationController
   def set_client
     @client = current_client
   end
+  
 end

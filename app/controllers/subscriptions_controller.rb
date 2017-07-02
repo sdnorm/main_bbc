@@ -64,21 +64,23 @@ class SubscriptionsController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_subscription
-      @subscription = Subscription.find(params[:id])
-    end
+private
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def subscription_params
-      # params.require(:subscription).permit(:clients_id, :plans_id)
-    end
+# Use callbacks to share common setup or constraints between actions.
+def set_subscription
+  @subscription = Subscription.find(params[:id])
+end
 
-    def redirect_to_signup
-      if !client_signed_in?
-        session["client_return_to"] = new_subscription_path
-        redirect_to new_client_registration_path
-      end
-    end
+# Never trust parameters from the scary internet, only allow the white list through.
+def subscription_params
+  # params.require(:subscription).permit(:clients_id, :plans_id)
+end
+
+def redirect_to_signup
+  if !client_signed_in?
+    session["client_return_to"] = new_subscription_path
+    redirect_to new_client_registration_path
+  end
+end
+
 end
