@@ -25,7 +25,7 @@ gem 'sprockets-es6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'
-# Use postgresql as the database for Active Record
+# Use postgresql as the database for Active 
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
@@ -71,3 +71,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'rb-readline'
+
+gem 'awesome_print'

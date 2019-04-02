@@ -38,7 +38,7 @@
       handler.open({
         amount: '<%= @company.plan.price * 100 %>',
         name: "Golden Taco Consulting",
-        description: '<%= if  @company.plan.nil? ? "" : @company.plan.name %>',
+        description: '<%= @company.plan.name unless @company.plan.nil? %>',
         panelLabel: "Subscribe",
         allowRememberMe: false,
         email: '<%= @client.email %>'
