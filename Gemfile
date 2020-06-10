@@ -26,7 +26,7 @@ gem 'sprockets', '>= 3.0.0'
 gem 'sprockets-es6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.1'
+gem 'rails', '~> 5.2.4.3'
 # Use postgresql as the database for Active 
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
@@ -75,3 +75,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rb-readline'
 
 gem 'awesome_print'
+
+gem "actionpack", ">= 5.2.4.3"
+gem "actionview", ">= 5.2.4.2"
+gem "activesupport", ">= 5.2.4.3"
